@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import { Urbanist } from "next/font/google";
 import "./globals.css";
-import Nabvar from "@/components/ui/navbar";
+import Nabvar from "@/components/ui/ui/navbar";
+import Footer from "@/components/ui/footer";
+import { ThemeProvider } from "@/components/theme-provider";
 
 const geistSans = Urbanist({
   subsets: ["latin"],
@@ -25,8 +27,16 @@ export default function RootLayout({
       <body
         className={`${geistSans} ${geistMono} antialiased`}
       >
+         <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
         <Nabvar />
         {children}
+        <Footer/>
+        </ThemeProvider>
       </body>
     </html>
   );
